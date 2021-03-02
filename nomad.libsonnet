@@ -19,7 +19,6 @@
     name:: error 'Must override "name"',
     driver:: error 'Must override "driver"',
     config:: error 'Must override "config"',
-
     services:: [],
 
     Name: task.name,
