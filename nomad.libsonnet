@@ -1,4 +1,6 @@
 {
+  local base = self,
+
   NetworkBridge: {
     Mode: 'bridge',
   },
@@ -24,6 +26,16 @@
     Driver: task.driver,
     Config: task.config,
     Services: task.services,
+  },
+  TaskDocker: base.Task {
+    local task = self,
+
+    image:: error 'Must override "image"',
+
+    driver: 'docker',
+    config: {
+      image: task.image,
+    },
   },
   Group: {
     local group = self,

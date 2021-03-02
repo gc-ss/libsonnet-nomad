@@ -16,12 +16,9 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.Task {
+        nomad.TaskDocker {
           name: 'redis',
-          driver: 'docker',
-          config: {
-            image: 'redis:3.2',
-          },
+          image: 'redis:3.2',
           services: [
             nomad.Service {
               name: 'redis-cache',

@@ -29,12 +29,9 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.Task {
+        nomad.TaskDocker {
           name: 'web',
-          driver: 'docker',
-          config: {
-            image: 'hashicorpnomad/counter-api:v3',
-          },
+          image: 'hashicorpnomad/counter-api:v3',
         },
       ],
     },
@@ -70,12 +67,9 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.Task {
+        nomad.TaskDocker {
           name: 'dashboard',
-          driver: 'docker',
-          config: {
-            image: 'hashicorpnomad/counter-dashboard:v3',
-          },
+          image: 'hashicorpnomad/counter-dashboard:v3',
           Env: {
             COUNTING_SERVICE_URL: 'http://${NOMAD_UPSTREAM_ADDR_count_api}',
           },
