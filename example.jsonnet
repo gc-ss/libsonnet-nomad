@@ -1,16 +1,10 @@
 local nomad = import 'nomad.libsonnet';
 
 nomad.Job {
-  name: 'example',
+  name: 'cache',
   groups: [
     nomad.Group {
       name: 'cache',
-      services: [
-        nomad.Service {
-          name: 'redis-cache',
-          port: 'db',
-        },
-      ],
       networks: [
         nomad.NetworkBridge {
           DynamicPorts: [
@@ -19,6 +13,12 @@ nomad.Job {
               To: 6379,
             },
           ],
+        },
+      ],
+      services: [
+        nomad.Service {
+          name: 'redis-cache',
+          port: 'db',
         },
       ],
       tasks: [
