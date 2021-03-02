@@ -1,3 +1,5 @@
+local time = import 'time.libsonnet';
+
 {
   local base = self,
 
@@ -87,5 +89,15 @@
       Datacenters: job.datacenters,
       TaskGroups: job.groups,
     },
+  },
+  HTTPCheck: {
+    local check = self,
+
+    path:: error 'Must override "path"',
+
+    Type: 'http',
+    Path: check.path,
+    Interval: 10 * time.second,
+    Timeout: 2 * time.second,
   },
 }
