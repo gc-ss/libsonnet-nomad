@@ -6,7 +6,7 @@ nomad.Job {
     nomad.Group {
       name: 'cache',
       networks: [
-        nomad.NetworkBridge {
+        nomad.BridgeNetwork {
           ports: [
             { name: 'db', to: 6379 },
           ],

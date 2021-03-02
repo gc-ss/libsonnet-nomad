@@ -25,7 +25,7 @@
     ),
   },
 
-  NetworkBridge: base.Network {
+  BridgeNetwork: base.Network {
     Mode: 'bridge',
   },
   Service: {

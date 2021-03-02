@@ -7,7 +7,7 @@ nomad.Job {
     nomad.Group {
       name: 'api',
       networks: [
-        nomad.NetworkBridge,
+        nomad.BridgeNetwork,
       ],
       services: [
         nomad.Service {
@@ -38,7 +38,7 @@ nomad.Job {
     nomad.Group {
       name: 'dashboard',
       networks: [
-        nomad.NetworkBridge {
+        nomad.BridgeNetwork {
           ports: [
             { name: 'http', to: 9002 },
           ],
