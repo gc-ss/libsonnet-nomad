@@ -33,9 +33,11 @@
 
     name:: error 'Must override "name"',
     port:: error 'Must override "port"',
+    tags:: [],
 
     Name: service.name,
     PortLabel: service.port,
+    Tags: service.tags,
   },
   Task: {
     local task = self,
