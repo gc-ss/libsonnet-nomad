@@ -13,3 +13,5 @@ doesn't offer very much at the moment. Two working examples are given in
 ## Resources
 
 See `examples/` for examples.
+
+Learn more about Jsonnet at [jsonnet.org](https://jsonnet.org).
