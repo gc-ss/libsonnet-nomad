@@ -1,4 +1,16 @@
 {
+  NetworkBridge: {
+    Mode: 'bridge',
+  },
+  Service: {
+    local service = self,
+
+    name:: error 'Must override "name"',
+    port:: error 'Must override "port"',
+
+    Name: service.name,
+    PortLabel: service.port,
+  },
   Task: {
     local task = self,
 
@@ -18,12 +30,14 @@
 
     name:: error 'Must override "name"',
     tasks:: error 'Must override "tasks"',
+    services:: [],
 
     Name: group.name,
     Tasks: group.tasks,
     EphemeralDisk: {
       SizeMB: 300,
     },
+    Services: group.services,
   },
   Job: {
     local job = self,
