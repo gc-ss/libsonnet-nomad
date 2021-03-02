@@ -19,7 +19,7 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.TaskDocker {
+        nomad.DockerTask {
           name: 'redis',
           image: 'redis:3.2',
         },

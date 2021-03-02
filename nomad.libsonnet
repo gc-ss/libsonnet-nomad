@@ -50,7 +50,7 @@
     Config: task.config,
     Services: task.services,
   },
-  TaskDocker: base.Task {
+  DockerTask: base.Task {
     local task = self,
 
     image:: error 'Must override "image"',

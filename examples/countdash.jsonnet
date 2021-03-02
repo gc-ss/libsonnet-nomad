@@ -29,7 +29,7 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.TaskDocker {
+        nomad.DockerTask {
           name: 'web',
           image: 'hashicorpnomad/counter-api:v3',
         },
@@ -63,7 +63,7 @@ nomad.Job {
         },
       ],
       tasks: [
-        nomad.TaskDocker {
+        nomad.DockerTask {
           name: 'dashboard',
           image: 'hashicorpnomad/counter-dashboard:v3',
           Env: {
