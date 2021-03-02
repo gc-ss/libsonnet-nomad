@@ -46,9 +46,6 @@
 
     Name: group.name,
     Tasks: group.tasks,
-    EphemeralDisk: {
-      SizeMB: 300,
-    },
     Services: group.services,
     Networks: group.networks,
   },
