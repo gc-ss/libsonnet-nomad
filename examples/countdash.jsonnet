@@ -39,12 +39,8 @@ nomad.Job {
       name: 'dashboard',
       networks: [
         nomad.NetworkBridge {
-          ReservedPorts: [
-            {
-              Label: 'http',
-              To: 9002,
-              Value: 9002,
-            },
+          ports: [
+            { name: 'http', to: 9002 },
           ],
         },
       ],

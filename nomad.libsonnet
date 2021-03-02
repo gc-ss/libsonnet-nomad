@@ -1,7 +1,31 @@
 {
   local base = self,
 
-  NetworkBridge: {
+  port(label, to, static): {
+    Label: label,
+    [if to != '' then 'To']: to,
+    [if static != '' then 'Static']: static,
+  },
+
+  Network: {
+    local network = self,
+
+    ports:: [],
+
+    ReservedPorts: std.filterMap(
+      function(o) std.objectHas(o, 'static'),
+      function(o) base.port(o.name, '', o.static),
+      network.ports,
+    ),
+
+    DynamicPorts: std.filterMap(
+      function(o) !std.objectHas(o, 'static'),
+      function(o) base.port(o.name, o.to, ''),
+      network.ports,
+    ),
+  },
+
+  NetworkBridge: base.Network {
     Mode: 'bridge',
   },
   Service: {

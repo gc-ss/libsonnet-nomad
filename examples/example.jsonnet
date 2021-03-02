@@ -7,11 +7,8 @@ nomad.Job {
       name: 'cache',
       networks: [
         nomad.NetworkBridge {
-          DynamicPorts: [
-            {
-              Label: 'db',
-              To: 6379,
-            },
+          ports: [
+            { name: 'db', to: 6379 },
           ],
         },
       ],
