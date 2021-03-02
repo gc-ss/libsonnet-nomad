@@ -11,7 +11,6 @@
     Name: task.name,
     Driver: task.driver,
     Config: task.config,
-
     Services: task.services,
   },
   Group: {
