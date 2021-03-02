@@ -1,5 +1,5 @@
-local nomad = import 'nomad.libsonnet';
-local time = import 'time.libsonnet';
+local nomad = import '../nomad.libsonnet';
+local time = import '../time.libsonnet';
 
 nomad.Job {
   name: 'countdash',

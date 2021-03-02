@@ -1,4 +1,4 @@
-local nomad = import 'nomad.libsonnet';
+local nomad = import '../nomad.libsonnet';
 
 nomad.Job {
   name: 'cache',
