@@ -6,7 +6,7 @@ nomad.Job {
   groups: [
     nomad.Group {
       name: 'api',
-      Networks: [
+      networks: [
         nomad.NetworkBridge,
       ],
       services: [
@@ -37,7 +37,7 @@ nomad.Job {
     },
     nomad.Group {
       name: 'dashboard',
-      Networks: [
+      networks: [
         nomad.NetworkBridge {
           ReservedPorts: [
             {

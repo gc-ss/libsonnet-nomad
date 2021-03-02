@@ -11,7 +11,7 @@ nomad.Job {
           port: 'db',
         },
       ],
-      Networks: [
+      networks: [
         nomad.NetworkBridge {
           DynamicPorts: [
             {

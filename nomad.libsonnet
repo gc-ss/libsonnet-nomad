@@ -43,6 +43,7 @@
     name:: error 'Must override "name"',
     tasks:: error 'Must override "tasks"',
     services:: [],
+    networks:: [],
 
     Name: group.name,
     Tasks: group.tasks,
@@ -50,6 +51,7 @@
       SizeMB: 300,
     },
     Services: group.services,
+    Networks: group.networks,
   },
   Job: {
     local job = self,
