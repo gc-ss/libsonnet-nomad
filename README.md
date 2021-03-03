@@ -37,3 +37,9 @@ curl --data @<(jsonnet examples/redis.jsonnet) $NOMAD_ADDR/v1/jobs
 set -x NOMAD_ADDR http://localhost:4646
 curl --data @(jsonnet examples/redis.jsonnet | psub) $NOMAD_ADDR/v1/jobs
 ```
+
+## Testing
+
+```
+./test.sh
+```
