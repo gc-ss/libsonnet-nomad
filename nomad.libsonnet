@@ -37,8 +37,8 @@ local time = import 'time.libsonnet';
     local service = self,
 
     name:: error 'Must override "name"',
-    port:: error 'Must override "port"',
     tags:: [],
+    port:: null,
 
     Name: service.name,
     PortLabel: service.port,
