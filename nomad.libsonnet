@@ -3,12 +3,12 @@ local time = import 'time.libsonnet';
 {
   local base = self,
 
-  Job(config): {
-    Job: std.prune(base._Job + config),
+  Job(name, config): {
+    Job: std.prune(base._Job { name: name } + config),
   },
 
-  SystemJob(config): {
-    Job: std.prune(base._Job { Type: 'system' } + config),
+  SystemJob(name, config): {
+    Job: base.Job(name, { Type: 'system' } + config),
   },
 
   _Job: {
