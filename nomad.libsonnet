@@ -64,31 +64,31 @@ local time = import 'time.libsonnet';
     PortLabel: service.port,
     Tags: service.tags,
   },
-  Task: {
-    local task = self,
+  Task(name, config):
+    assert name != '' : 'must specify name';
 
-    name:: error 'Must override "name"',
-    driver:: error 'Must override "driver"',
-    config:: error 'Must override "config"',
-    services:: [],
-    templates:: [],
+    {
+      local task = self,
 
-    Name: task.name,
-    Driver: task.driver,
-    Config: task.config,
-    Services: task.services,
-    Templates: task.templates,
-  },
-  DockerTask: base.Task {
-    local task = self,
+      driver:: error 'Must override "driver"',
+      services:: [],
+      templates:: [],
 
-    image:: error 'Must override "image"',
+      Name: name,
+      Driver: task.driver,
+      Config: task.config,
+      Services: task.services,
+      Templates: task.templates,
+    } + config,
+  DockerTask(name, config):
+    base.Task(name, config {
+      image:: error 'Must override "image"',
 
-    driver: 'docker',
-    config: {
-      image: task.image,
-    },
-  },
+      driver:: 'docker',
+      config+:: {
+        image: config.image,
+      },
+    }),
   Group(name, config):
     assert name != '' : 'must specify name';
     assert std.length(config.tasks) != 0 : 'must override "tasks"';

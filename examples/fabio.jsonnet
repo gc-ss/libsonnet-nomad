@@ -12,8 +12,7 @@ nomad.SystemJob('fabio', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'fabio',
+        nomad.DockerTask('fabio', {
           image: 'fabiolb/fabio',
           config+: {
             network_mode: 'host',
@@ -22,7 +21,7 @@ nomad.SystemJob('fabio', {
             Cpu: 100,
             MemoryMB: 64,
           },
-        },
+        }),
       ],
     }),
   ],

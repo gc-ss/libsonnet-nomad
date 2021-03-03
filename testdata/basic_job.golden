@@ -10,7 +10,8 @@
             "Tasks": [
                {
                   "Config": {
-                     "image": "some-image"
+                     "image": "some-image",
+                     "network_mode": "host"
                   },
                   "Driver": "docker",
                   "Name": "some-task"

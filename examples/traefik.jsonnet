@@ -24,8 +24,7 @@ nomad.Job('traefik', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'traefik',
+        nomad.DockerTask('traefik', {
           image: 'traefik:v2.2',
           config+: {
             network_mode: 'host',
@@ -58,7 +57,7 @@ nomad.Job('traefik', {
               |||,
             },
           ],
-        },
+        }),
       ],
     }),
   ],

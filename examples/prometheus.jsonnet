@@ -26,14 +26,13 @@ nomad.Job('prometheus', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'prometheus',
+        nomad.DockerTask('prometheus', {
           image: 'prom/prometheus:latest',
 
           volumes: [
             'local/prometheus.yml:/etc/prometheus/prometheus.yml',
           ],
-        },
+        }),
       ],
     }),
   ],

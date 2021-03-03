@@ -17,10 +17,9 @@ nomad.Job('redis', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'redis',
+        nomad.DockerTask('redis', {
           image: 'redis:3.2',
-        },
+        }),
       ],
     }),
   ],

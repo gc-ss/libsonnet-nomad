@@ -27,10 +27,9 @@ nomad.Job('countdash', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'web',
+        nomad.DockerTask('web', {
           image: 'hashicorpnomad/counter-api:v3',
-        },
+        }),
       ],
     }),
     nomad.Group('dashboard', {
@@ -60,13 +59,12 @@ nomad.Job('countdash', {
         },
       ],
       tasks: [
-        nomad.DockerTask {
-          name: 'dashboard',
+        nomad.DockerTask('dashboard', {
           image: 'hashicorpnomad/counter-dashboard:v3',
           Env: {
             COUNTING_SERVICE_URL: 'http://${NOMAD_UPSTREAM_ADDR_count_api}',
           },
-        },
+        }),
       ],
     }),
   ],
