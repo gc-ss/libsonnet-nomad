@@ -89,6 +89,11 @@ local time = import 'time.libsonnet';
       TaskGroups: job.groups,
     },
   },
+  SystemJob: base.Job {
+    Job+: {
+      Type: 'system',
+    },
+  },
   HTTPCheck: {
     local check = self,
 
