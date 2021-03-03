@@ -2,7 +2,7 @@
 
 This repo can be used as a library for generating Nomad jobspecs. It's WIP, so
 doesn't offer very much at the moment. Working examples are
-given in `examples/`.
+given in [`examples`](examples/).
 
 ## Why
 
@@ -17,6 +17,6 @@ no fun.
 
 ## Resources
 
-See `examples/` for examples.
+See [`examples`](examples/) for examples.
 
 Learn more about Jsonnet at [jsonnet.org](https://jsonnet.org).
