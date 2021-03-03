@@ -1,8 +1,8 @@
 # libsonnet-nomad
 
 This repo can be used as a library for generating Nomad jobspecs. It's WIP, so
-doesn't offer very much at the moment. Two working examples are given in
-`examples/`.
+doesn't offer very much at the moment. Working examples are
+given in `examples/`.
 
 ## Why
 
