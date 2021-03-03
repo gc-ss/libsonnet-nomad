@@ -1,7 +1,7 @@
 local nomad = import '../nomad.libsonnet';
 local time = import '../time.libsonnet';
 
-nomad.Job {
+nomad.Job({
   name: 'traefik',
   groups: [
     nomad.Group {
@@ -17,7 +17,7 @@ nomad.Job {
       services: [
         nomad.Service {
           name: 'traefik',
-          checks: [
+          Checks: [
             nomad.TCPCheck {
               port: 'http',
               name: 'alive',
@@ -64,4 +64,4 @@ nomad.Job {
       ],
     },
   ],
-}
+})

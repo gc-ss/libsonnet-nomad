@@ -3,6 +3,26 @@ local time = import 'time.libsonnet';
 {
   local base = self,
 
+  Job(config): {
+    Job: std.prune(base._Job + config),
+  },
+
+  SystemJob(config): {
+    Job: std.prune(base._Job { Type: 'system' } + config),
+  },
+
+  _Job: {
+    local job = self,
+
+    name:: error 'Must override "name"',
+    groups:: error 'Must override "groups"',
+    datacenters:: ['dc1'],
+
+    ID: job.name,
+    Datacenters: job.datacenters,
+    TaskGroups: job.groups,
+  },
+
   port(label, to, value): {
     Label: label,
     [if to != '' then 'To']: to,
@@ -81,24 +101,6 @@ local time = import 'time.libsonnet';
     Tasks: group.tasks,
     Services: group.services,
     Networks: group.networks,
-  },
-  Job: {
-    local job = self,
-
-    name:: error 'Must override "name"',
-    groups:: error 'Must override "groups"',
-    datacenters:: ['dc1'],
-
-    Job: {
-      ID: job.name,
-      Datacenters: job.datacenters,
-      TaskGroups: job.groups,
-    },
-  },
-  SystemJob: base.Job {
-    Job+: {
-      Type: 'system',
-    },
   },
   Check: {
     local check = self,

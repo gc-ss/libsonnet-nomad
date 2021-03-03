@@ -1,7 +1,7 @@
 local nomad = import '../nomad.libsonnet';
 local time = import '../time.libsonnet';
 
-nomad.Job {
+nomad.Job({
   name: 'prometheus',
 
   groups: [
@@ -40,4 +40,4 @@ nomad.Job {
       ],
     },
   ],
-}
+})

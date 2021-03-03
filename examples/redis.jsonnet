@@ -1,6 +1,6 @@
 local nomad = import '../nomad.libsonnet';
 
-nomad.Job {
+nomad.Job({
   name: 'redis',
   groups: [
     nomad.Group {
@@ -26,4 +26,4 @@ nomad.Job {
       ],
     },
   ],
-}
+})
