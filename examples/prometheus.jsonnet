@@ -23,7 +23,7 @@ nomad.Job {
           Checks: [
             nomad.HTTPCheck {
               name: 'prometheus ui port alive',
-              path: '/status',
+              path: '/-/healthy',
             },
           ],
         },
