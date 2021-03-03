@@ -20,3 +20,20 @@ no fun.
 See [`examples`](examples/) for examples.
 
 Learn more about Jsonnet at [jsonnet.org](https://jsonnet.org).
+
+## Quickstart
+
+If you don't already have Nomad, get a working cluster running in virtualbox
+via [vagrant-nomad](https://github.com/krishicks/vagrant-nomad).
+
+#### bash
+```
+export NOMAD_ADDR=http://localhost:4646
+curl --data @<(jsonnet examples/redis.jsonnet) $NOMAD_ADDR/v1/jobs
+```
+
+#### fish
+```
+set -x NOMAD_ADDR http://localhost:4646
+curl --data @(jsonnet examples/redis.jsonnet | psub) $NOMAD_ADDR/v1/jobs
+```
