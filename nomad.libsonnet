@@ -26,7 +26,6 @@ local time = import 'time.libsonnet';
       network.ports,
     ),
   },
-
   BridgeNetwork: base.Network {
     Mode: 'bridge',
   },
