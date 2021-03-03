@@ -51,11 +51,13 @@ local time = import 'time.libsonnet';
     driver:: error 'Must override "driver"',
     config:: error 'Must override "config"',
     services:: [],
+    templates:: [],
 
     Name: task.name,
     Driver: task.driver,
     Config: task.config,
     Services: task.services,
+    Templates: task.templates,
   },
   DockerTask: base.Task {
     local task = self,
@@ -98,14 +100,36 @@ local time = import 'time.libsonnet';
       Type: 'system',
     },
   },
-  HTTPCheck: {
+  Check: {
+    local check = self,
+    Interval: 10 * time.second,
+    Timeout: 2 * time.second,
+  },
+  HTTPCheck: base.Check {
     local check = self,
 
     path:: error 'Must override "path"',
 
     Type: 'http',
     Path: check.path,
-    Interval: 10 * time.second,
-    Timeout: 2 * time.second,
+  },
+  TCPCheck: base.Check {
+    local check = self,
+
+    name:: null,
+    port:: error 'Must override "port"',
+
+    Type: 'tcp',
+    PortLabel: check.port,
+    Name: check.name,
+  },
+  Template: {
+    local template = self,
+
+    destination:: error 'Must override "destination"',
+    data:: error 'Must override "data"',
+
+    DestPath: template.destination,
+    EmbeddedTmpl: template.data,
   },
 }
