@@ -3,6 +3,12 @@ local nomad = import '../nomad.libsonnet';
 nomad.Job('some-job', {
   groups: [
     nomad.Group('some-group', {
+      services: [
+        nomad.Service {
+          name: 'some-service',
+          port: 9001,
+        },
+      ],
       tasks: [
         nomad.DockerTask('some-task', {
           image: 'some-image',

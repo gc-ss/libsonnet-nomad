@@ -7,6 +7,12 @@
       "TaskGroups": [
          {
             "Name": "some-group",
+            "Services": [
+               {
+                  "Name": "some-service",
+                  "PortLabel": 9001
+               }
+            ],
             "Tasks": [
                {
                   "Config": {
