@@ -22,7 +22,11 @@ local time = import 'time.libsonnet';
 
     DynamicPorts: std.filterMap(
       function(o) !std.objectHas(o, 'static'),
-      function(o) base.port(o.name, o.to, ''),
+      function(o) base.port(
+        o.name,
+        if std.objectHas(o, 'to') then o.to else '',
+        '',
+      ),
       network.ports,
     ),
   },
