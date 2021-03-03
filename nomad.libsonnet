@@ -53,17 +53,19 @@ local time = import 'time.libsonnet';
   BridgeNetwork: base.Network {
     Mode: 'bridge',
   },
-  Service: {
-    local service = self,
+  Service(name, config):
+    assert name != '' : 'must specify name';
 
-    name:: error 'Must override "name"',
-    tags:: [],
-    port:: null,
+    {
+      local service = self,
 
-    Name: service.name,
-    PortLabel: service.port,
-    Tags: service.tags,
-  },
+      tags:: [],
+      port:: null,
+
+      Name: name,
+      PortLabel: service.port,
+      Tags: service.tags,
+    } + config,
   Task(name, config):
     assert name != '' : 'must specify name';
 

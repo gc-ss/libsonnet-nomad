@@ -11,10 +11,9 @@ nomad.Job('redis', {
         },
       ],
       services: [
-        nomad.Service {
-          name: 'redis',
+        nomad.Service('redis', {
           port: 'db',
-        },
+        }),
       ],
       tasks: [
         nomad.DockerTask('redis', {

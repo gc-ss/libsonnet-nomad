@@ -13,15 +13,14 @@ nomad.Job('traefik', {
         },
       ],
       services: [
-        nomad.Service {
-          name: 'traefik',
+        nomad.Service('traefik', {
           Checks: [
             nomad.TCPCheck {
               port: 'http',
               name: 'alive',
             },
           ],
-        },
+        }),
       ],
       tasks: [
         nomad.DockerTask('traefik', {

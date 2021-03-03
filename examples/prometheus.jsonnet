@@ -12,8 +12,7 @@ nomad.Job('prometheus', {
         },
       ],
       services: [
-        nomad.Service {
-          name: 'prometheus',
+        nomad.Service('prometheus', {
           port: 'ui',
           tags: ['urlprefix-/'],
 
@@ -23,7 +22,7 @@ nomad.Job('prometheus', {
               path: '/-/healthy',
             },
           ],
-        },
+        }),
       ],
       tasks: [
         nomad.DockerTask('prometheus', {

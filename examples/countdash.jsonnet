@@ -8,8 +8,7 @@ nomad.Job('countdash', {
         nomad.BridgeNetwork,
       ],
       services: [
-        nomad.Service {
-          name: 'count-api',
+        nomad.Service('count-api', {
           port: '9001',
           Connect: {
             SidecarService: {},
@@ -24,7 +23,7 @@ nomad.Job('countdash', {
               Timeout: 3 * time.second,
             },
           ],
-        },
+        }),
       ],
       tasks: [
         nomad.DockerTask('web', {
@@ -41,8 +40,7 @@ nomad.Job('countdash', {
         },
       ],
       services: [
-        nomad.Service {
-          name: 'count-dashboard',
+        nomad.Service('count-dashboard', {
           port: '9002',
           Connect: {
             SidecarService: {
@@ -56,7 +54,7 @@ nomad.Job('countdash', {
               },
             },
           },
-        },
+        }),
       ],
       tasks: [
         nomad.DockerTask('dashboard', {
