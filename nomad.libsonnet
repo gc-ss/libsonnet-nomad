@@ -3,10 +3,10 @@ local time = import 'time.libsonnet';
 {
   local base = self,
 
-  port(label, to, static): {
+  port(label, to, value): {
     Label: label,
     [if to != '' then 'To']: to,
-    [if static != '' then 'Static']: static,
+    [if value != '' then 'Value']: value,
   },
 
   Network: {
