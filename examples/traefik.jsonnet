@@ -3,8 +3,7 @@ local time = import '../time.libsonnet';
 
 nomad.Job('traefik', {
   groups: [
-    nomad.Group {
-      name: 'traefik',
+    nomad.Group('traefik', {
       networks: [
         nomad.Network {
           ports: [
@@ -61,6 +60,6 @@ nomad.Job('traefik', {
           ],
         },
       ],
-    },
+    }),
   ],
 })

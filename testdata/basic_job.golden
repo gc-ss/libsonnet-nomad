@@ -1,0 +1,22 @@
+{
+   "Job": {
+      "Datacenters": [
+         "dc1"
+      ],
+      "ID": "some-job",
+      "TaskGroups": [
+         {
+            "Name": "some-group",
+            "Tasks": [
+               {
+                  "Config": {
+                     "image": "some-image"
+                  },
+                  "Driver": "docker",
+                  "Name": "some-task"
+               }
+            ]
+         }
+      ]
+   }
+}

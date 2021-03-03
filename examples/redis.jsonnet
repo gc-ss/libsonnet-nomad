@@ -2,8 +2,7 @@ local nomad = import '../nomad.libsonnet';
 
 nomad.Job('redis', {
   groups: [
-    nomad.Group {
-      name: 'redis',
+    nomad.Group('redis', {
       networks: [
         nomad.BridgeNetwork {
           ports: [
@@ -23,6 +22,6 @@ nomad.Job('redis', {
           image: 'redis:3.2',
         },
       ],
-    },
+    }),
   ],
 })

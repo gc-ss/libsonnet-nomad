@@ -3,8 +3,7 @@ local time = import '../time.libsonnet';
 
 nomad.Job('prometheus', {
   groups: [
-    nomad.Group {
-      name: 'prometheus',
+    nomad.Group('prometheus', {
       networks: [
         nomad.BridgeNetwork {
           ports: [
@@ -36,6 +35,6 @@ nomad.Job('prometheus', {
           ],
         },
       ],
-    },
+    }),
   ],
 })

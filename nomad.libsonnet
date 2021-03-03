@@ -89,19 +89,22 @@ local time = import 'time.libsonnet';
       image: task.image,
     },
   },
-  Group: {
-    local group = self,
+  Group(name, config):
+    assert name != '' : 'must specify name';
+    assert std.length(config.tasks) != 0 : 'must override "tasks"';
 
-    name:: error 'Must override "name"',
-    tasks:: error 'Must override "tasks"',
-    services:: [],
-    networks:: [],
+    local group = {
+      name: name,
+      services: [],
+      networks: [],
+    } + config;
 
-    Name: group.name,
-    Tasks: group.tasks,
-    Services: group.services,
-    Networks: group.networks,
-  },
+    {
+      Name: name,
+      Tasks: group.tasks,
+      Services: group.services,
+      Networks: group.networks,
+    },
   Check: {
     local check = self,
     Interval: 10 * time.second,

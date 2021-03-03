@@ -3,8 +3,7 @@ local time = import '../time.libsonnet';
 
 nomad.Job('countdash', {
   groups: [
-    nomad.Group {
-      name: 'api',
+    nomad.Group('api', {
       networks: [
         nomad.BridgeNetwork,
       ],
@@ -33,9 +32,8 @@ nomad.Job('countdash', {
           image: 'hashicorpnomad/counter-api:v3',
         },
       ],
-    },
-    nomad.Group {
-      name: 'dashboard',
+    }),
+    nomad.Group('dashboard', {
       networks: [
         nomad.BridgeNetwork {
           ports: [
@@ -70,6 +68,6 @@ nomad.Job('countdash', {
           },
         },
       ],
-    },
+    }),
   ],
 })

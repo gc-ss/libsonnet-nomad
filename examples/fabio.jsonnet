@@ -2,8 +2,7 @@ local nomad = import '../nomad.libsonnet';
 
 nomad.SystemJob('fabio', {
   groups: [
-    nomad.Group {
-      name: 'fabio',
+    nomad.Group('fabio', {
       networks: [
         nomad.Network {
           ports: [
@@ -25,6 +24,6 @@ nomad.SystemJob('fabio', {
           },
         },
       ],
-    },
+    }),
   ],
 })
