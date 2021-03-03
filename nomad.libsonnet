@@ -54,7 +54,7 @@ local time = import 'time.libsonnet';
     Mode: 'bridge',
   },
   Service(name, config):
-    assert name != '' : 'must specify name';
+    assert name != '' : 'Must specify name';
 
     {
       local service = self,
@@ -67,7 +67,7 @@ local time = import 'time.libsonnet';
       Tags: service.tags,
     } + config,
   Task(name, config):
-    assert name != '' : 'must specify name';
+    assert name != '' : 'Must specify name';
 
     {
       local task = self,
@@ -92,7 +92,7 @@ local time = import 'time.libsonnet';
       },
     }),
   Group(name, config):
-    assert name != '' : 'must specify name';
+    assert name != '' : 'Must specify name';
     assert std.length(config.tasks) != 0 : 'must override "tasks"';
 
     local group = {
