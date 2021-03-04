@@ -136,8 +136,10 @@ local time = import 'time.libsonnet';
 
     destination:: error 'Must override "destination"',
     data:: error 'Must override "data"',
+    env:: false,
 
     DestPath: template.destination,
     EmbeddedTmpl: template.data,
+    EnvVars: template.env,
   },
 }
