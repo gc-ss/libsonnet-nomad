@@ -23,10 +23,15 @@ local time = import 'time.libsonnet';
     TaskGroups: job.groups,
   },
 
-  port(label, to, value): {
-    Label: label,
-    [if to != '' then 'To']: to,
-    [if value != '' then 'Value']: value,
+  Port: {
+    name:: error 'Must override "name"',
+
+    to:: 0,
+    static:: 0,
+
+    Label: self.name,
+    To: self.to,
+    Value: self.static,
   },
 
   Network: {
@@ -36,17 +41,13 @@ local time = import 'time.libsonnet';
 
     ReservedPorts: std.filterMap(
       function(o) std.objectHas(o, 'static'),
-      function(o) base.port(o.name, '', o.static),
+      function(o) base.Port + o,
       network.ports,
     ),
 
     DynamicPorts: std.filterMap(
       function(o) !std.objectHas(o, 'static'),
-      function(o) base.port(
-        o.name,
-        if std.objectHas(o, 'to') then o.to else '',
-        '',
-      ),
+      function(o) base.Port + o,
       network.ports,
     ),
   },
