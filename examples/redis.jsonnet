@@ -4,7 +4,7 @@ nomad.Job('redis', {
   groups: [
     nomad.Group('redis', {
       networks: [
-        nomad.BridgeNetwork {
+        nomad.Network {
           ports: [
             { name: 'db', to: 6379 },
           ],
@@ -18,6 +18,9 @@ nomad.Job('redis', {
       tasks: [
         nomad.DockerTask('redis', {
           image: 'redis:3.2',
+          config+: {
+            ports: ['db'],
+          },
         }),
       ],
     }),
