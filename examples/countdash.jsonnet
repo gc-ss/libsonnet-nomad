@@ -14,11 +14,10 @@ nomad.Job('countdash', {
             SidecarService: {},
           },
           Checks: [
-            {
-              Expose: true,
-              Type: 'http',
+            nomad.HTTPCheck {
+              path: '/health',
               Name: 'api-health',
-              Path: '/health',
+              Expose: true,
               Interval: 10 * time.second,
               Timeout: 3 * time.second,
             },
