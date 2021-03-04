@@ -7,10 +7,12 @@
       "TaskGroups": [
          {
             "Name": "some-group",
+            "Networks": [ ],
             "Services": [
                {
                   "Name": "some-service",
-                  "PortLabel": 9001
+                  "PortLabel": 9001,
+                  "Tags": [ ]
                }
             ],
             "Tasks": [
@@ -20,7 +22,9 @@
                      "network_mode": "host"
                   },
                   "Driver": "docker",
-                  "Name": "some-task"
+                  "Name": "some-task",
+                  "Services": [ ],
+                  "Templates": [ ]
                }
             ]
          }

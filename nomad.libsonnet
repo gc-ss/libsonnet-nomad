@@ -4,7 +4,7 @@ local time = import 'time.libsonnet';
   local base = self,
 
   Job(name, config): {
-    Job: std.prune(base._Job { name: name } + config),
+    Job: base._Job { name: name } + config,
   },
 
   SystemJob(name, config): {
